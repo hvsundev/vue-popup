@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { getNotice, getNoticeContents, checkLogin } from '../api/api.js'
+import { getNotice, getNoticeContents } from '../api/api.js'
 
 Vue.use(Vuex);
 
@@ -16,9 +16,6 @@ export const store = new Vuex.Store ({
         },
         SET_NOTICE_CONTENTS(state, contents) {
             state.contents = contents;
-        },
-        SET_LOGIN_CHECK(state, isPassed) {
-            state.isPassed = isPassed;
         }
     },
     actions: {
@@ -32,12 +29,6 @@ export const store = new Vuex.Store ({
             getNoticeContents(idx)
             .then(({ data }) => {
                 commit('SET_NOTICE_CONTENTS', data);
-            })
-        },
-        CHECK_LOGIN({ commit }, user) {
-            checkLogin(user)
-            .then(({ data }) => {
-                commit('SET_LOGIN_CHECK', data);
             })
         }
     },
