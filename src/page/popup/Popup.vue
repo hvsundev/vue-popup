@@ -126,14 +126,14 @@ export default {
   float: left;
   width: 370px;
   height: 400px;
-  border: 1px solid black;
+  background-color: #afbcd4;
 }
 
 .scroll {
   float: left;
   width: 200px;
   height: 310px;
-  border: 1px solid black;
+  background-color: #afbcd4;
   margin: 20px 0px 0px 23px;
 }
 
