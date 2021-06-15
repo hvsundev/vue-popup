@@ -1,8 +1,11 @@
 <template>
   <div>
     <vueper-slides class="no-shadow" fixed-height="400px">
+      <!-- :image="require('../../assets/' + item.img) 이렇게도 가능 -->
       <vueper-slide v-for="(item, i) in notices" :key="i"
-        :title="item.title" :contents="item.contents" />
+        :image="setImg(item.img)"
+        @click="moveToNoticeDetail(item.idx)"
+        />
     </vueper-slides>
   </div>
 </template>
@@ -22,7 +25,16 @@ export default {
     })
   },
   created() {
-    this.$store.dispatch('GET_NOTICE');
+    this.$store.dispatch('GET_NOTICE')
+  },
+  methods: {
+    setImg(imgNm) {
+      console.log("실행? >>> ", imgNm)
+      return require('../../assets/' + imgNm)
+    },
+    moveToNoticeDetail(idx) {
+      console.log("idx >>> ", idx)
+    }
   }
 
 }
