@@ -17,7 +17,7 @@
       </div>
       <div id="notice" v-else>
         <div class="title">
-          <notice-view ref="child1"></notice-view>
+          <notice-view v-bind:pdata="notice_idx"></notice-view>
         </div>
       </div>
     </div>
@@ -61,13 +61,11 @@ export default {
     moveToNoticeDetail(idx) {
       this.notice_show = true;
       this.main_show = false;
-      console.log("부모 >>> ", idx);
-      console.log("this.$refs.child1 >>> ", this.$refs.child1);
-      this.$refs.child1.show_contents(idx);
+      this.notice_idx = idx;
     }
   },
   mounted() {
-    console.log("this.$refs.child >>> ", this.$refs.child);
+    this.$refs.child;
   }
 }
 </script>

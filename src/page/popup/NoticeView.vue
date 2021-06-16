@@ -2,7 +2,7 @@
   <div id="notice_wrap">
     <div class="notice" v-if="show_title">
       <ul class="notice list">
-        <li :key='item' v-for="item in notices">
+        <li :key='item.idx' v-for="item in notices">
           <div v-bind:class="item.type" @click="show_contents(`${item.idx}`)">
             <p class="title">{{ item.title }}</p>
             <p class="regdate">{{ item.regdate.split(' ')[0] }}</p>
@@ -21,10 +21,24 @@ import { mapState } from 'vuex';
 import InfoView from './InfoView.vue';
 
 export default {
+  props: ['pdata'],
+  mounted() {
+    console.log("프롭스 >>> ", this.$props.pdata)
+    if(this.$props.pdata != undefined) {
+      this.notice_idx = this.$props.pdata;
+    }
+  },
   data() {
     return {
       show_title: true,
       notice_idx: '',
+    }
+  },
+  watch: {
+    notice_idx: function(newVal, oldVal) {
+      console.log("new >>> ", newVal);
+      console.log("old >>> ", oldVal);
+      this.show_contents(newVal);
     }
   },
   computed: {
