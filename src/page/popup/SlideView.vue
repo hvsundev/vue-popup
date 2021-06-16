@@ -4,7 +4,7 @@
       <!-- :image="require('../../assets/' + item.img) 이렇게도 가능 -->
       <vueper-slide v-for="(item, i) in notices" :key="i"
         :image="setImg(item.img)"
-        @click="moveToNoticeDetail(item.idx)"
+        @click.native="moveToNoticeDetail(item.idx)"
         />
     </vueper-slides>
   </div>
@@ -29,11 +29,11 @@ export default {
   },
   methods: {
     setImg(imgNm) {
-      console.log("실행? >>> ", imgNm)
       return require('../../assets/' + imgNm)
     },
     moveToNoticeDetail(idx) {
       console.log("idx >>> ", idx)
+      this.$parent.moveToNoticeDetail(idx);
     }
   }
 

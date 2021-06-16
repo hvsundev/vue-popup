@@ -3,7 +3,7 @@
     <div class="notice" v-if="show_title">
       <ul class="notice list">
         <li :key='item' v-for="item in notices">
-          <div @click="show_contents(`${item.idx}`)">
+          <div v-bind:class="item.type" @click="show_contents(`${item.idx}`)">
             <p class="title">{{ item.title }}</p>
             <p class="regdate">{{ item.regdate.split(' ')[0] }}</p>
           </div>
@@ -64,17 +64,25 @@ export default {
   list-style: none;
 }
 
-.notice.list li div {
-  width: 640px;
+.notice.list li div.notice {
+  width: 610px;
   height: 60px;
-  background-image: url('../../assets/li.png');
+  background-image: url('../../assets/li_notice.png');
+  color: black;
+  margin-bottom: 8px;
+}
+
+.notice.list li div.event {
+  width: 610px;
+  height: 60px;
+  background-image: url('../../assets/li_event.png');
   color: black;
   margin-bottom: 8px;
 }
 
 .notice.list li div .title {
   padding-top: 3px;
-  padding-left: 25px;
+  padding-left: 90px;
   display: inline-block;
 }
 

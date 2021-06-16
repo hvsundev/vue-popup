@@ -12,14 +12,13 @@
     </div>
     <div id="contents">
       <div id="main" v-if="main_show">
-        <div class="slide"><slide-view></slide-view></div>
-        <div class="scroll"><scroll-view></scroll-view></div>
+        <div class="slide"><slide-view ref="child2"></slide-view></div>
+        <div class="scroll"><scroll-view ref="child3"></scroll-view></div>
       </div>
       <div id="notice" v-else>
         <div class="title">
-          <notice-view></notice-view>
+          <notice-view ref="child1"></notice-view>
         </div>
-
       </div>
     </div>
   </div>
@@ -58,7 +57,17 @@ export default {
         this.notice_show = true;
         this.main_show = false;
       }
+    },
+    moveToNoticeDetail(idx) {
+      this.notice_show = true;
+      this.main_show = false;
+      console.log("부모 >>> ", idx);
+      console.log("this.$refs.child1 >>> ", this.$refs.child1);
+      this.$refs.child1.show_contents(idx);
     }
+  },
+  mounted() {
+    console.log("this.$refs.child >>> ", this.$refs.child);
   }
 }
 </script>
@@ -73,14 +82,10 @@ export default {
 #popup {
   font-family: CookieRunOTF;
   margin: 0 auto;
-  width: 750px;
+  width: 720px;
   height: 400px;
   border: 2px solid black;
   background-color: #C3CAD7;
-}
-
-#contents .scroll {
-  padding: 23px;
 }
 
 #toolbar li {
@@ -124,17 +129,15 @@ export default {
 
 .slide {
   float: left;
-  width: 370px;
+  width: 400px;
   height: 400px;
-  background-color: #afbcd4;
 }
 
 .scroll {
   float: left;
-  width: 200px;
-  height: 310px;
-  background-color: #afbcd4;
-  margin: 20px 0px 0px 23px;
+  width: 205px;
+  height: 365px;
+  margin: 1rem;
 }
 
 #notice {

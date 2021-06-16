@@ -27,7 +27,7 @@ export default {
         modal : this.$modal },
         {
           name: 'dynamic-modal',
-          width: '754px',
+          width: '720px',
           height: '404px',
           draggable: false,
           resizable: false,
@@ -43,6 +43,7 @@ export default {
 
 <style>
 body {
+  margin: 0 auto;
   background-image: url("../assets/background.png");
   background-size: 1600px;
   background-repeat: no-repeat;

@@ -43,7 +43,7 @@ export default {
 }
 
 .info_view li div {
-  width: 640px;
+  width: 610px;
   height: 60px;
   background-color: white;
   color: black;
