@@ -1,5 +1,5 @@
 <template>
-  <div id="popup">
+  <div id="popup" :class="{main_color: main_show, notice_color: notice_show}">
     <div id="toolbar">
       <ul>
         <li @click="show_contents(main)" class="main_btn"
@@ -84,6 +84,13 @@ export default {
   width: 720px;
   height: 400px;
   border: 2px solid black;
+}
+
+.main_color {
+  background-color: #364057;
+}
+
+.notice_color {
   background-color: #C3CAD7;
 }
 

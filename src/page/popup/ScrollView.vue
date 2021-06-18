@@ -1,16 +1,29 @@
+import { mapState } from 'vuex';
 <template>
   <div class="scroll_item_wrap">
-    <li class="scroll_item">01</li>
-    <li class="scroll_item">02</li>
-    <li class="scroll_item">03</li>
-    <li class="scroll_item">04</li>
-    <li class="scroll_item">05</li>
+    <li class="scroll_item" v-for="item in notices" :key="item.idx">
+      <img :src="setImg(item.img)">
+    </li>
   </div>
 </template>
 
 <script>
-export default {
+import { mapState } from 'vuex';
 
+export default {
+  computed: {
+    ...mapState({
+      notices: state => state.scrollNotice
+    })
+  },
+  created() {
+    this.$store.dispatch('GET_SCROLL_NOTICE')
+  },
+  methods: {
+    setImg(imgNm) {
+      return require('../../assets/' + imgNm)
+    }
+  }
 }
 </script>
 
@@ -29,12 +42,15 @@ export default {
 .scroll_item {
   margin-bottom: 15px;
   height: 120px;
-  border: 1px solid black;
   list-style: none;
 }
 
 .scroll_item:last-child {
   margin-bottom: 0;
+}
+
+.scroll_item img {
+  height: 120px;
 }
 
 </style>

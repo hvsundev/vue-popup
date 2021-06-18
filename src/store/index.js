@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { getNotice, getNoticeContents } from '../api/api.js'
+import { getNotice, getNoticeContents, getScrollNotice } from '../api/api.js'
 
 Vue.use(Vuex);
 
@@ -8,7 +8,8 @@ export const store = new Vuex.Store ({
     state: {
         notices: [],
         contents: {},
-        isPassed: ''
+        isPassed: '',
+        scrollNotice: []
     },
     mutations: {
         SET_NOTICES(state, notices) {
@@ -16,6 +17,9 @@ export const store = new Vuex.Store ({
         },
         SET_NOTICE_CONTENTS(state, contents) {
             state.contents = contents;
+        },
+        SET_SCROLL_NOTICE(state, scrollNotice) {
+            state.scrollNotice = scrollNotice;
         }
     },
     actions: {
@@ -29,6 +33,12 @@ export const store = new Vuex.Store ({
             getNoticeContents(idx)
             .then(({ data }) => {
                 commit('SET_NOTICE_CONTENTS', data);
+            })
+        },
+        GET_SCROLL_NOTICE({ commit }) {
+            getScrollNotice()
+            .then(({ data }) => {
+                commit('SET_SCROLL_NOTICE', data);
             })
         }
     },

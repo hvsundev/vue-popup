@@ -27,7 +27,7 @@ export default {
         modal : this.$modal },
         {
           name: 'dynamic-modal',
-          width: '720px',
+          width: '724px',
           height: '404px',
           draggable: false,
           resizable: false,
