@@ -38,7 +38,11 @@ export default {
     notice_idx: function(newVal, oldVal) {
       console.log("new >>> ", newVal);
       console.log("old >>> ", oldVal);
-      this.show_contents(newVal);
+      
+      if(newVal != '') {
+        console.log("여기? >>> ", newVal);
+        this.show_contents(newVal);
+      }
     }
   },
   computed: {
@@ -58,6 +62,7 @@ export default {
       this.show_title = false;
     },
     back_notice() {
+      this.notice_idx = '';
       this.show_title = true;
     }
   }

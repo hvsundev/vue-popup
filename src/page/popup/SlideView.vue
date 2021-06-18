@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vueper-slides class="no-shadow" fixed-height="400px">
+    <vueper-slides class="no-shadow" fixed-height="400px"  dragging-distance="70" prevent-y-scroll>
       <!-- :image="require('../../assets/' + item.img) 이렇게도 가능 -->
       <vueper-slide v-for="(item, i) in notices" :key="i"
         :image="setImg(item.img)"

@@ -54,6 +54,7 @@ export default {
         this.main_show = true;
 
       } else if(name == 'notice') {
+        this.notice_idx = '';
         this.notice_show = true;
         this.main_show = false;
       }
